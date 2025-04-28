@@ -50,7 +50,7 @@ TANENBAUM, A. S.; BOS, H. *Modern Operating Systems*. 4th ed. Pearson, 2014.
 
 ---
 
-## Instruções de Execução
+## Instruções de execução
 
 ### Requisitos
 - Java 11 ou superior
@@ -79,7 +79,10 @@ Durante a execução:
 - O script `graficos.py` será chamado automaticamente pelo Java.
 - Os gráficos serão gerados como imagens `.png` na pasta do projeto.
 
-### Observação
+### Observação1
 Se o script Python não abrir ou não gerar os gráficos corretamente, verifique se o caminho do interpretador Python está correto dentro da `Main.java`, ou utilize o caminho absoluto para garantir a execução.
 
->>>>>>> 5eb4524 (Submissão do trabalho de AV2 - Computação Paralela)
+### Observação2
+Deixamos os arquivos CSV's salvos, caso queira testar, pode apagar a executar mais uma vez. Eles serão criados novamente.
+
+>>>>>>> [Link](https://github.com/angelo-kaue/Trab-Av2-Compt-Paralela)
