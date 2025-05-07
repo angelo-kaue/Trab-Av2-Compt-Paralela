@@ -50,54 +50,6 @@ TANENBAUM, A. S.; BOS, H. *Modern Operating Systems*. 4th ed. Pearson, 2014.
 
 ---
 
-# ANÁLISE DE DESEMPENHO DE ALGORITMOS DE ORDENAÇÃO EM AMBIENTES CONCORRENTES E PARALELOS USANDO JAVA
-
-**Autores:**
-- Ângelo Kauê  
-- Guilherme Silva
-
-**Palavras-chave:** Paralelismo. Ordenação. Java. Desempenho. Multithreading.
-
----
-
-## Resumo
-
-Este artigo apresenta um estudo comparativo sobre o desempenho de quatro algoritmos de ordenação implementados em Java, tanto em versões sequenciais quanto paralelas. Foram utilizados os algoritmos Bubble Sort, Merge Sort, Quick Sort e Selection Sort, aplicados a diferentes tamanhos de vetores e com variações no número de threads (2 e 4). Os tempos de execução foram registrados em arquivos CSV, e os resultados foram representados em gráficos gerados automaticamente por meio de um script Python, acionado diretamente pelo código Java. O objetivo do estudo é observar se a paralelização contribui efetivamente para ganho de desempenho. Os testes revelaram que, apesar de alguns algoritmos se beneficiarem do paralelismo, o ganho nem sempre é garantido, especialmente para algoritmos mais simples ou para tamanhos pequenos de entrada.
-
----
-
-## Introdução
-
-O aumento da demanda por performance em aplicações computacionais tem impulsionado o estudo de técnicas de paralelização. Algoritmos de ordenação estão entre as estruturas mais estudadas em ciência da computação, e entender como se comportam em ambientes concorrentes é essencial para otimizações reais. Este trabalho analisa o comportamento de diferentes algoritmos de ordenação, comparando suas execuções sequenciais e paralelas, utilizando a linguagem Java e ferramentas nativas da plataforma para gerenciar threads.
-
----
-
-## Metodologia
-
-Foram implementados quatro algoritmos de ordenação em Java: Bubble Sort, Merge Sort, Quick Sort e Selection Sort. Cada um foi desenvolvido em duas versões: sequencial e paralela (com controle de threads). Uma classe de testes foi responsável por executar os algoritmos com diferentes tamanhos de vetor (1000, 5000, 10000) e quantidades de threads (2 e 4). Para cada cenário, foram realizadas cinco execuções, e os tempos médios foram registrados em arquivos CSV. Em seguida, um script Python foi acionado automaticamente pelo Java para processar os dados e gerar gráficos ilustrativos em PNG, permitindo melhor análise comparativa.
-
----
-
-## Resultados e Discussão
-
-Os resultados mostraram que a performance varia bastante entre os algoritmos. Bubble Sort e Selection Sort, por exemplo, não apresentaram ganhos relevantes com paralelização. Em alguns casos, o uso de múltiplas threads até aumentou o tempo de execução, devido ao overhead de criação e sincronização das threads. Por outro lado, algoritmos como Merge Sort e Quick Sort apresentaram desempenho superior nas versões paralelas, principalmente com entradas maiores. Merge Sort, por sua estrutura naturalmente divisível, se beneficiou melhor da divisão em tarefas. Quick Sort também teve bons resultados, embora sua eficiência dependa da escolha do pivô. Os gráficos mostraram claramente que o uso de múltiplas threads só compensa em algoritmos que realmente se beneficiam da divisão de tarefas e em cenários de maior complexidade.
-
----
-
-## Conclusão
-
-Com a comparação entre versões sequenciais e paralelas, foi possível concluir que o uso de múltiplas threads não garante, por si só, melhor desempenho. Algoritmos como Merge Sort demonstraram maior eficiência em ambientes paralelos, enquanto outros, como Bubble Sort, pouco se beneficiaram. O processo automatizado — desde a execução até a geração dos gráficos — aumentou a confiabilidade dos resultados e contribuiu para uma análise clara. Este estudo reforça a importância de avaliar o tipo de algoritmo e o contexto antes de aplicar paralelismo em busca de performance.
-
----
-
-## Referências
-
-CORMEN, T. H.; LEISERSON, C. E.; RIVEST, R. L.; STEIN, C. *Algoritmos: Teoria e Prática*. 3ª ed. Rio de Janeiro: Elsevier, 2012.  
-ORACLE. *Java Platform, Standard Edition Documentation*. Disponível em: https://docs.oracle.com/javase. Acesso em: 25 abr. 2025.  
-TANENBAUM, A. S.; BOS, H. *Modern Operating Systems*. 4th ed. Pearson, 2014.
-
----
-
 ## Instruções de Execução
 
 ### Requisitos
