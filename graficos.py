@@ -1,8 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 import os
 
-# Lista de arquivos e títulos
+#para dar um estilo visual limpo
+sns.set(style="whitegrid")
+
+#dicionário com arquivos e seus respectivos títulos
 arquivos = {
     "bubble_results.csv": "Bubble Sort",
     "merge_results.csv": "Merge Sort",
@@ -18,18 +22,34 @@ for nome_arquivo, titulo in arquivos.items():
     df = pd.read_csv(nome_arquivo, header=None)
     df.columns = ["Tamanho", "Threads", "TempoSerial(ms)", "TempoParalelo(ms)"]
 
-    plt.figure(figsize=(8, 5))
-    for thread in sorted(df["Threads"].unique()):
-        subset = df[df["Threads"] == thread]
-        plt.plot(subset["Tamanho"], subset["TempoParalelo(ms)"], marker='o', label=f"{int(thread)} Threads")
+    #agrupar os dados por Tamanho e Threads, calculando média e desvio
+    agrupado = df.groupby(["Tamanho", "Threads"])["TempoParalelo(ms)"].agg(["mean", "std"]).reset_index()
+    agrupado.columns = ["Tamanho", "Threads", "Media", "Desvio"]
 
-    plt.title(f"{titulo} - Tempo Paralelo vs Tamanho")
-    plt.xlabel("Tamanho do Vetor")
-    plt.ylabel("Tempo (ms)")
-    plt.legend()
-    plt.grid(True)
+    plt.figure(figsize=(10, 6))
+    sns.barplot(
+        data=agrupado,
+        x="Tamanho",
+        y="Media",
+        hue="Threads",
+        palette="Set2",
+        capsize=0.1,
+        errwidth=1.5,
+        ci=None
+    )
+
+    #implementamos alguns ajustes visuais
+    plt.title(f"{titulo} - Tempo Médio Paralelo por Tamanho", fontsize=14)
+    plt.xlabel("Tamanho do Vetor", fontsize=12)
+    plt.ylabel("Tempo Médio (ms)", fontsize=12)
+    plt.legend(title="Threads")
     plt.tight_layout()
-    plt.tight_layout()
-    plt.savefig(f"{nome_arquivo}_grafico.png")
+
+    #salvar gráfico
+    nome_imagem = f"{nome_arquivo}_grafico.png"
+    plt.savefig(nome_imagem)
     plt.close()
 
+    print(f"[OK] Gráfico salvo: {nome_imagem}")
+
+print("✅ Todos os gráficos foram gerados com sucesso!")
